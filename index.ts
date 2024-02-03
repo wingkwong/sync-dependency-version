@@ -49,10 +49,12 @@ function syncPackageJsonVersions(sourcePath: string, targetPath: string): void {
   }
 }
 
-try {
-  syncPackageJsonVersions(path.join(source, 'package.json'), path.join(target, 'package.json'))
-}
-catch (error) {
-  console.error(`Error: ${error.message}`)
-  process.exit(1)
+export async function main(): Promise<void> {
+  try {
+    syncPackageJsonVersions(path.join(source, 'package.json'), path.join(target, 'package.json'))
+  }
+  catch (error) {
+    console.error(`Error: ${error.message}`)
+    process.exit(1)
+  }
 }
