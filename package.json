@@ -1,0 +1,50 @@
+{
+  "name": "sync-dependency-version",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.14.1",
+  "description": "Synchronise dependency version between repositories",
+  "author": "WK Wong <wingkwong.code@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/wingkwong/sync-dependency-version",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wingkwong/sync-dependency-version.git"
+  },
+  "keywords": [
+    "version",
+    "sync",
+    "npm",
+    "package"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "sync-dependency-version": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup index.ts --format esm,cjs --dts --clean --minify",
+    "lint": "eslint . --fix"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.6.2",
+    "@types/node": "^20.11.16",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "eslint": "^8.56.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  }
+}
