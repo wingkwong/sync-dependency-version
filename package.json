@@ -26,10 +26,9 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "bin": {
-    "sync-dependency-version": "./dist/index.js"
-  },
+  "bin": "./bin/sync-dependency-version.js",
   "files": [
+    "bin",
     "dist"
   ],
   "scripts": {
