@@ -6,7 +6,7 @@ import { Command } from 'commander'
 const program = new Command()
 
 program
-  .version('0.0.1')
+  .version('0.1.0')
   .requiredOption('-s, --source <source>', 'Source directory containing the package.json file')
   .requiredOption('-t, --target <target>', 'Target directory where the package.json file will be synchronized')
   .parse(process.argv)
