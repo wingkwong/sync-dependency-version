@@ -1,6 +1,6 @@
 {
   "name": "sync-dependency-version",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "packageManager": "pnpm@8.15.1",
   "description": "Synchronise dependency versions between repositories",
   "author": "WK Wong <wingkwong.code@gmail.com>",
