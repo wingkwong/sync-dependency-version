@@ -6,12 +6,13 @@ import { Command } from 'commander'
 const program = new Command()
 
 program
-  .version('0.1.0')
+  .version('0.2.0')
   .requiredOption('-s, --source <source>', 'Source directory containing the package.json file')
   .requiredOption('-t, --target <target>', 'Target directory where the package.json file will be synchronized')
+  .option('-e, --exclude <dependencyName>', 'dependencies to be excluded, separated by commas')
   .parse(process.argv)
 
-const { source, target } = program.opts()
+const { source, target, exclude } = program.opts()
 
 function readPackageJson(filePath: string): any {
   const absolutePath = path.resolve(process.cwd(), filePath)
@@ -33,7 +34,11 @@ function syncPackageJsonVersions(sourcePath: string, targetPath: string): void {
 
   let isUpdated = false
 
+  const excludedPackages = exclude?.split(',') ?? []
+
   Object.keys(sourcePackageJson.dependencies).forEach((dep) => {
+    if (excludedPackages.includes(dep))
+      return
     if (sourcePackageJson.dependencies[dep] !== targetPackageJson.dependencies[dep]) {
       targetPackageJson.dependencies[dep] = sourcePackageJson.dependencies[dep]
       isUpdated = true
