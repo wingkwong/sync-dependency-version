@@ -1,7 +1,7 @@
 {
   "name": "sync-dependency-version",
-  "version": "0.2.0",
-  "packageManager": "pnpm@8.15.1",
+  "version": "0.2.1",
+  "packageManager": "pnpm@8.15.4",
   "description": "Synchronise dependency versions between repositories",
   "author": "WK Wong <wingkwong.code@gmail.com>",
   "license": "MIT",
@@ -41,7 +41,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.2",
     "@types/node": "^20.11.16",
-    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
     "eslint": "^8.56.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
