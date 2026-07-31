@@ -1,21 +1,24 @@
 {
   "name": "sync-dependency-version",
-  "version": "0.2.1",
-  "packageManager": "pnpm@8.15.4",
-  "description": "Synchronise dependency versions between repositories",
-  "author": "WK Wong <wingkwong.code@gmail.com>",
-  "license": "MIT",
-  "homepage": "https://github.com/wingkwong/sync-dependency-version",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wingkwong/sync-dependency-version.git"
-  },
+  "version": "0.2.2",
+  "description": "Synchronise dependency versions between package.json files",
   "keywords": [
     "version",
     "sync",
     "npm",
     "package"
   ],
+  "homepage": "https://github.com/wingkwong/sync-dependency-version",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wingkwong/sync-dependency-version.git"
+  },
+  "license": "MIT",
+  "author": "WK Wong <wingkwong.code@gmail.com>",
+  "packageManager": "pnpm@10.18.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -32,18 +35,21 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup index.ts --format esm,cjs --dts --clean --minify",
-    "lint": "eslint . --fix"
+    "build": "pnpm run build:js && pnpm run build:types",
+    "build:js": "tsup index.ts --format esm,cjs --clean --minify",
+    "build:types": "tsc --emitDeclarationOnly",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
+    "test": "pnpm run build && node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "^15.0.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.6.2",
-    "@types/node": "^20.11.16",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "eslint": "^8.56.0",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
+    "@types/node": "^26.1.2",
+    "oxlint": "^1.76.0",
+    "tsup": "^8.5.1",
+    "typescript": "^7.0.2"
   }
 }
