@@ -33,7 +33,10 @@
   ],
   "scripts": {
     "build": "tsup index.ts --format esm,cjs --dts --clean --minify",
-    "lint": "eslint . --fix"
+    "test": "pnpm run build && node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "commander": "^12.0.0"
